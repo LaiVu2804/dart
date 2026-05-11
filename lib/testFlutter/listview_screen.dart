@@ -8,7 +8,7 @@ class ListViewScreen extends StatefulWidget {
 class _ListViewScreenState extends State<ListViewScreen> {
   // 1. Khai báo biến ở đây để giữ giá trị khi Rebuild
   List<String> entries = <String>['A', 'B', 'C'];
-  List<int> colorCodes = <int>[600, 500, 100];
+  List<int> colorCodes = <int>[600, 400, 200];
   int countAddItem = 0;
 
   @override
@@ -69,11 +69,18 @@ class _ListViewScreenState extends State<ListViewScreen> {
         padding: const EdgeInsets.all(8),
         itemCount: entries.length,
         itemBuilder: (BuildContext context, int index) {
-          return Container(
-            height: 50,
-            margin: EdgeInsets.symmetric(vertical: 2),
-            color: Colors.amber[colorCodes[index] % 900],
-            child: Center(child: Text('Entry ${entries[index]}')),
+          return InkWell(
+            onTap: () {
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text('Item ${entries[index]}')));
+            },
+            child: Container(
+              height: 50,
+              margin: EdgeInsets.symmetric(vertical: 2),
+              color: Colors.green[colorCodes[index] % 900],
+              child: Center(child: Text('Entry ${entries[index]}')),
+            ),
           );
         },
         separatorBuilder: (BuildContext context, int index) {

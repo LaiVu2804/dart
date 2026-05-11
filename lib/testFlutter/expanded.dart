@@ -1,24 +1,43 @@
+import 'package:dart_flutter/testFlutter/listview_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp()); // Gọi class MyApp thay vì viết trực tiếp
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const HomeScreen(),
+      theme: ThemeData(
+        dividerTheme: const DividerThemeData(
+          thickness: 2,
+          color: Colors.pink,
+          indent: 10,
+          endIndent: 10,
+        ),
+      ),
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,44 +146,19 @@ class HomeScreen extends StatelessWidget {
                 ),
 
                 SizedBox(height: 10),
-
-                SizedBox(
-                  width: 200,
-                  height: 200,
-                  child: Stack(
-                    children: <Widget>[
-                      Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          width: 100,
-                          height: 100,
-                          color: Colors.deepPurpleAccent,
-                        ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return ListViewScreen();
+                        },
                       ),
-
-                      Container(
-                        padding: const EdgeInsets.all(5.0),
-                        alignment: Alignment.bottomCenter,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: <Color>[
-                              Colors.black.withAlpha(0),
-                              Colors.black12,
-                              Colors.black45,
-                            ],
-                          ),
-                        ),
-                        child: const Text(
-                          'Foreground Text',
-                          style: TextStyle(color: Colors.black, fontSize: 20.0),
-                        ),
-                      ),
-                    ],
-                  ),
+                    );
+                  },
+                  child: Text('Nhan de chuyen trang '),
                 ),
-                buildStack(),
               ],
             ),
           ),

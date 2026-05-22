@@ -58,7 +58,7 @@ class _ListViewScreenState extends State<ListViewScreen> {
             SizedBox(height: 50),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(context,entries);
               },
               child: Text('Back to Screen'),
             ),

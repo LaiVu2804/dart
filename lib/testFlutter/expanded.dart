@@ -147,14 +147,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 SizedBox(height: 10),
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
+                  onPressed: () async {
+                    var result = await Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) {
                           return ListViewScreen('Du lieu truyen tu expanded');
                         },
                       ),
+                    );
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(result.toString()))
                     );
                   },
                   child: Text('Nhan de chuyen trang '),

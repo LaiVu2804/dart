@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ListViewScreen extends StatefulWidget {
+  String _sData;
+
+  ListViewScreen(this._sData);
+
   @override
   State<ListViewScreen> createState() => _ListViewScreenState();
 }
@@ -14,7 +18,7 @@ class _ListViewScreenState extends State<ListViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('List View Screen')),
+      appBar: AppBar(title: Text(widget._sData)),
       body: SafeArea(
         child: Column(
           children: [
@@ -50,6 +54,8 @@ class _ListViewScreenState extends State<ListViewScreen> {
                 ),
               ],
             ),
+
+            SizedBox(height: 50),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);

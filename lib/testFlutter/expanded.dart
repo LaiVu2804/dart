@@ -152,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return ListViewScreen();
+                          return ListViewScreen('Du lieu truyen tu expanded');
                         },
                       ),
                     );
